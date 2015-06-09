@@ -1,0 +1,50 @@
+<h1> <%= @teetime.time %> </h1>
+
+<% if @reservations.find_by_teetime_id(@teetime.id) === nil %>
+	<h2> Tee Time is Totally Open! </h2>
+<% else %> 
+	<% if @reservations.where(teetime_id: @teetime.id).count === 4 %>
+	<h2> <%= @reservations.where(teetime_id: @teetime.id)[0].name %> </h2>
+	<h3> <%= @reservations.where(teetime_id: @teetime.id)[0].comments %> </h3>
+	<h2> <%= @reservations.where(teetime_id: @teetime.id)[1].name %> </h2>
+	<h3> <%= @reservations.where(teetime_id: @teetime.id)[1].comments %> </h3>
+	<h2> <%= @reservations.where(teetime_id: @teetime.id)[2].name %> </h2>
+	<h3> <%= @reservations.where(teetime_id: @teetime.id)[2].comments %> </h3>
+	<h2> <%= @reservations.where(teetime_id: @teetime.id)[3].name %> </h2>
+	<h3> <%= @reservations.where(teetime_id: @teetime.id)[3].comments %> </h3>
+	<% elsif @reservations.where(teetime_id: @teetime.id).count === 3 %>
+	<h2> <%= @reservations.where(teetime_id: @teetime.id)[0].name %> </h2>
+	<h3> <%= @reservations.where(teetime_id: @teetime.id)[0].comments %> </h3>
+	<h2> <%= @reservations.where(teetime_id: @teetime.id)[1].name %> </h2>
+	<h3> <%= @reservations.where(teetime_id: @teetime.id)[1].comments %> </h3>
+	<h2> <%= @reservations.where(teetime_id: @teetime.id)[2].name %> </h2>
+	<h3> <%= @reservations.where(teetime_id: @teetime.id)[2].comments %> </h3>
+	<% elsif @reservations.where(teetime_id: @teetime.id).count === 2 %>
+	<h2> <%= @reservations.where(teetime_id: @teetime.id)[0].name %> </h2>
+	<h3> <%= @reservations.where(teetime_id: @teetime.id)[0].comments %> </h3>
+	<h2> <%= @reservations.where(teetime_id: @teetime.id)[1].name %> </h2>
+	<h3> <%= @reservations.where(teetime_id: @teetime.id)[1].comments %> </h3>
+	<% else %>
+	<h2> <%= @reservations.where(teetime_id: @teetime.id)[0].name %> </h2>
+	<h3> <%= @reservations.where(teetime_id: @teetime.id)[0].comments %> </h3>
+	<% end %>
+<% end %>
+
+
+
+ <%= form_for(@reservation) do |f| %>  
+  <div class="field"> 
+    <%= f.label :name %> Confirmation<br> 
+    <%= f.text_field :name %><br />
+    <%= f.label :comments %> About Your Game <br />
+    <%= f.text_field :comments %>
+    <%= f.hidden_field :teetime_id, :value => @teetime.id %>
+  </div>
+  <br />
+  <div class="actions"> 
+    <button><%= f.submit "Book Time" %></button>
+  </div> 
+<% end %>
+
+<br />
+<button><%= link_to "Back To All Tee Times", "/courses" %></button>

@@ -1,0 +1,16 @@
+<h2><%= @course.name %></h2>
+<img src="<%= @course.img %>">
+<div class="course">
+<p><%= @course.address %></p>
+<p><%= @course.city %></p>
+<p><%= @course.phone %></p>
+<p><%= @course.price %></p>
+<p><%= @course.classification %></p>
+
+<% @teetimes.each do |teetime| %>
+<%= teetime.time %><br />
+<button><%= link_to "Book Tee Time", teetime_path(teetime) %> </button> <br />
+<br />
+<% end %>
+</div>
+

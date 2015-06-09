@@ -1,0 +1,27 @@
+<head>
+    <meta charset="UTF-8">
+    <title> Signup </title>
+</head>
+
+  <body>
+  <h1> Welcome to FriendlyFour! </h1>
+    <div class="wrap">
+    <div class="avatar">
+      <img src="http://us.cdn4.123rf.com/168nwm/chudtsankov/chudtsankov1307/chudtsankov130700014/20749046-lycklig-golfbolltecknad-tecken-vinka-f%C3%B6r-h%C3%A4lsning.jpg">
+    </div>
+  <%= form_for (@user) do |f| %>
+  <%= f.text_field :name, :placeholder => "Name" %>
+  <br />
+  <%= f.text_field :email, :placeholder => "Email" %>
+  <br />
+  <%= f.password_field :password, :placeholder => "Password" %>
+  <br />
+  <button><%= f.submit %></button>
+  <br />
+  <br />
+  <button><%= link_to "Already a User?", "/login" %></button>
+  </div>
+  <% end %>
+ 
+ </body>
+
