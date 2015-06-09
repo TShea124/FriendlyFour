@@ -1,3 +1,5 @@
+<button><%= link_to "Logout", "/" %></button>
+<button><%= link_to "Edit Profile", "/users/:id/edit" %></button>
 <h1> <%= @teetime.time %> </h1>
 
 <% if @reservations.find_by_teetime_id(@teetime.id) === nil %>
@@ -31,6 +33,7 @@
 <% end %>
 
 
+<div class="teetime">
 
  <%= form_for(@reservation) do |f| %>  
   <div class="field"> 
@@ -45,6 +48,7 @@
     <button><%= f.submit "Book Time" %></button>
   </div> 
 <% end %>
+</div>
 
 <br />
 <button><%= link_to "Back To All Tee Times", "/courses" %></button>

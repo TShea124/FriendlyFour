@@ -1,6 +1,8 @@
+<button><%= link_to "Logout", "/" %></button>
+<button><%= link_to "Edit Profile", "/users/:id/edit" %></button>
 <h2><%= @course.name %></h2>
-<img src="<%= @course.img %>">
 <div class="course">
+<img src="<%= @course.img %>">
 <p><%= @course.address %></p>
 <p><%= @course.city %></p>
 <p><%= @course.phone %></p>
