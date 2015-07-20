@@ -1,7 +1,7 @@
 <button><%= link_to "Logout", "/" %></button>
-<button><%= link_to "Edit Profile", "/users/:id/edit" %></button>
 <h1> <%= @teetime.time %> </h1>
 
+<div class="ress">
 <% if @reservations.find_by_teetime_id(@teetime.id) === nil %>
 	<h2> Tee Time is Totally Open! </h2>
 <% else %> 
@@ -31,6 +31,7 @@
 	<h3> <%= @reservations.where(teetime_id: @teetime.id)[0].comments %> </h3>
 	<% end %>
 <% end %>
+</div>
 
 
 <div class="teetime">

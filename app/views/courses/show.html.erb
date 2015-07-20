@@ -1,18 +1,27 @@
 <button><%= link_to "Logout", "/" %></button>
-<button><%= link_to "Edit Profile", "/users/:id/edit" %></button>
-<h2><%= @course.name %></h2>
+<button><%= link_to "Back", "/courses" %></button>
+<h4><%= @course.name %></h4>
+
 <div class="course">
 <img src="<%= @course.img %>">
 <p><%= @course.address %></p>
 <p><%= @course.city %></p>
 <p><%= @course.phone %></p>
-<p><%= @course.price %></p>
-<p><%= @course.classification %></p>
+<p><%= @course.price %> <%= @course.classification %> </p>
 
-<% @teetimes.each do |teetime| %>
-<%= teetime.time %><br />
-<button><%= link_to "Book Tee Time", teetime_path(teetime) %> </button> <br />
-<br />
-<% end %>
+<h4> Choose a Tee Time Below: </h4>
 </div>
+
+
+<div class="bottom">
+<select onChange="window.location.href=this.value">
+<% @teetimes.each do |teetime| %>
+<option value="<%= teetime_path(teetime) %>"><%= teetime.time %></option>
+<% end %>
+</select>
+</div>
+
+
+
+
 

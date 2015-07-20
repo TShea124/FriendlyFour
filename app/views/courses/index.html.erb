@@ -1,25 +1,23 @@
 <button><%= link_to "Logout", "/" %></button>
-<button><%= link_to "Edit Profile", "/users/:id/edit" %></button>
 <h1> FriendlyFour! </h1>
 
-<h2> Search for any New York Golf Course by Name or City: </h2>
+<h2> Search for a Long Island Golf Course by Name: </h2>
+
 <div class="search">
 <%= form_tag(courses_path, :method => "get", id: "search-form") do %>
   <%= text_field_tag :search, params[:search], placeholder: "Search Golf Courses" %>
-  <%= submit_tag "Search", :name => nil %>
+  <%= submit_tag "Search", :name => nil%>
 <% end %>
 <br />
 
 <% @courses.each do |course| %>
-<%= course.name %> <br />
-<%= course.address %> <br />
-<%= course.city %> <br />
-<%= course.phone %> <br />
-<%= course.classification %> <br />
-<%= course.price %> <br />
-<button><%= link_to "More Info and Tee Times", course_path(course) %></button>
-<br />
-<br />
+<div class="coursephoto" style="background-color:rgba(48, 71, 255, 0.5);">
+<h3><%= course.name %> <h3/>
+<h3><%= course.address %>, <%= course.city %> </h3>
+<h3><%= course.phone %> </h3>
+<h3><%= course.classification %> <%= course.price %> </h3>
+<button> <%= link_to "More Info and Tee Times", course_path(course) %> </button>
+</div>
 <% end %>
 
 </div>
